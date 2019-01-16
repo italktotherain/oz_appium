@@ -1,1 +1,5 @@
+source 'https://rubygems.org'
+
 gem 'oz_appium', path: '..'
+gem 'pry'
+gem 'pry-byebug'
