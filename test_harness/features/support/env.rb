@@ -1,3 +1,5 @@
+ENV['OZ_CONFIG_DIR'] = "#{File.dirname(__FILE__)}/../../config"
+
 require 'oz_appium'
 
 # TODO: Turn this shit into proper configuration
