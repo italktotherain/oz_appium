@@ -53,9 +53,9 @@ module CoreUtils
 
   def self.wait_until(timeout, &block)
     begin
-      Watir::Wait.until(timeout: timeout, &block)
+      Selenium::WebDriver::Wait.new(timeout: timeout).until(&block)
       return true
-    rescue Watir::Wait::TimeoutError => e
+    rescue Selenium::WebDriver::Error::TimeOutError => e
       return false
     end
   end
@@ -72,9 +72,9 @@ module CoreUtils
     }
 
     begin
-      Watir::Wait.until(timeout: timeout, &safety_block)
+      Selenium::WebDriver::Wait.new(timeout: timeout).until(&safety_block)
       return true
-    rescue Watir::Wait::TimeoutError => e
+    rescue Selenium::WebDriver::Error::TimeOutError => e
       return false
     end
   end
