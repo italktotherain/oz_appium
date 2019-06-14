@@ -69,9 +69,25 @@ class BrowserEngine
         }
         Appium::Driver.new(opts, false).start_driver
       when 'ios' # iOS Capabilities (local simulator)
-        # TODO: iOS capabilities here
-        # Use sendKeysStrategy: "setValue"
-      else
+        opts = {
+            caps: {
+                automationName: 'XCUITest',
+                platformName: 'iOS',
+                platformVersion: '12.1',
+                autoAcceptAlerts: true,
+                noReset: true,
+                instrumentApp: true,
+                deviceName: ENV['SIMULATOR_NAME'],
+                app: "#{ENV['APP_PATH']}/TraverseMobile/TraverseMobile.iOS/bin/iPhoneSimulator/Debug/TraverseMobileiOS.app",
+                newCommandTimeout: 30,
+                sendKeysStrategy: 'setValue'
+            },
+            appium_lib: {
+                wait_timeout: 30
+            }
+        }
+        Appium::Driver.new(opts, false).start_driver
+    else
       raise "ERROR: Appium specified as browser but no mobile platform given!\n" if @world.configuration['MOBILE_PLATFORM'].nil?
       raise "ERROR: Mobile Platform #{@world.configuration['MOBILE_PLATFORM']} is not supported!\n"
     end
