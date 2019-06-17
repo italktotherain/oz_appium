@@ -32,7 +32,7 @@ def require_all(directory)
 end
 
 def recursively_require_all_edge_pages(directory)
-  source = File.dirname(__FILE__)
+  source = File.dirname(File.expand_path(caller_locations.first.path))
   directory = File.join(source, directory)
   Dir["#{directory}/**/*.rb"].each { |file|
     unless file =~ /base_page|root_page/
@@ -43,7 +43,7 @@ def recursively_require_all_edge_pages(directory)
 end
 
 def recursively_require_all_base_pages(directory)
-  source = File.dirname(__FILE__)
+  source = File.dirname(File.expand_path(caller_locations.first.path))
   directory = File.join(source, directory)
   Dir["#{directory}/**/*.rb"].each { |file|
     if file =~ /base_page/
