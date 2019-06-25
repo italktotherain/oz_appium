@@ -109,7 +109,7 @@ class CoreElement
   def present?
     if @world.configuration['BROWSER'] == 'appium'
       begin
-        watir_element.wait_until(&:present?)
+        CoreUtils.wait_until(10) { watir_element.displayed? }
         return true
       rescue
         # I don't actually know if this will continue yet when using appium, so just commenting the line out because it doesn't exist in base oz
