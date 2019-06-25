@@ -55,7 +55,7 @@ module CoreUtils
     begin
       Selenium::WebDriver::Wait.new(timeout: timeout).until(&block)
       return true
-    rescue Selenium::WebDriver::Error::TimeOutError => e
+    rescue Selenium::WebDriver::Error::TimeoutError => e
       return false
     end
   end
@@ -74,7 +74,7 @@ module CoreUtils
     begin
       Selenium::WebDriver::Wait.new(timeout: timeout).until(&safety_block)
       return true
-    rescue Selenium::WebDriver::Error::TimeOutError => e
+    rescue Selenium::WebDriver::Error::TimeoutError => e
       return false
     end
   end
