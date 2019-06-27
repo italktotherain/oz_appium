@@ -77,7 +77,7 @@ class BrowserEngine
                 autoAcceptAlerts: true,
                 noReset: true,
                 instrumentApp: true,
-                deviceName: "#{ENV['SIMULATOR_NAME']}",
+                deviceName: @world.configuration['SIMULATOR_NAME'],
                 app: "#{ENV['APP_PATH']}/TraverseMobile/TraverseMobile.iOS/bin/iPhoneSimulator/Debug/TraverseMobileiOS.app",
                 newCommandTimeout: 30,
                 sendKeysStrategy: 'setValue'
